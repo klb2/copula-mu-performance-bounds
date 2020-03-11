@@ -57,10 +57,10 @@ theory presented in Part I.
 `TODO:`
 
 * Ergodic Secret-Key Capacity:
-  [https://gitlab.com/klb2/...](https://gitlab.com/klb2/...)
+  [https://gitlab.com/klb2/bounds-secret-key-capacity](https://gitlab.com/klb2/bounds-secret-key-capacity)
   ([https://doi.org/XXX](doi:XXX))
 * Secrecy Outage Probability:
-  [https://gitlab.com/klb2/...](https://gitlab.com/klb2/...)
+  [https://gitlab.com/klb2/bounds-secrecy-outage](https://gitlab.com/klb2/bounds-secrecy-outage)
   ([https://doi.org/XXX](doi:XXX), [](arXiv:XXX))
 
 
