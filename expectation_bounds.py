@@ -2,7 +2,7 @@ import numpy as np
 from scipy import integrate
 from scipy.special import expi
 
-def inv_cdf(u, lam):
+def inv_cdf(u, lam):  # Rayleigh fading
     return -np.log(1-u)/lam
 
 def sum_rate(x, y, snr_x, snr_y):
@@ -12,8 +12,15 @@ def mac_rate(x, y, snr):
     s = 1/snr
     return np.log2(1 + x/(s+y))
 
+def sinr(x, y, s=1):
+    return x/(s+y)
+
+
 def exp_times_expi(x):
     return np.exp(x)*expi(-x)
+
+
+### SUM RATE ###
 
 def lower_sum_rate(lam_x, lam_y, snr_x, snr_y):
     _param = (lam_x*lam_y)/(snr_x*lam_y+snr_y*lam_x)
@@ -35,7 +42,11 @@ def indep_sum_rate(lam_x, lam_y, snr_x, snr_y):
         rate[idx_uneq] = (snr_x*lam_y*exp_times_expi(lam_x/snr_x)-snr_y*lam_x*exp_times_expi(lam_y/snr_y))/(snr_x*lam_y - snr_y*lam_x)
     return -rate/np.log(2)
 
+#################
 
+
+
+### MAC RATE ###
 
 def _single_upper_mac_rate(lam_x, lam_y, snr):
     def cost_func(u, snr=1, lam_x=1, lam_y=1):
@@ -61,3 +72,27 @@ def indep_mac_rate(lam_x, lam_y, snr):
         expect_xi = -(np.exp(lam_x*s)*lam_y*expi(-lam_x*s)-np.exp(lam_y*s)*lam_x*expi(-lam_y*s)+np.log(s)*(lam_x-lam_y))/(lam_y-lam_x)
         expect_psi = -np.exp(lam_y*s)*(expi(-lam_y*s)-np.exp(-lam_y*s)*np.log(s))
     return (expect_xi - expect_psi)/np.log(2)
+
+##############
+
+
+
+### SINR ###
+
+def lower_sinr(s=1, lam_x=1, lam_y=1):
+    return (lam_y + lam_y**2*s*np.exp(lam_y*s)*expi(-lam_y*s))/lam_x
+
+def _single_upper_sinr(s=1, lam_x=1, lam_y=1):
+    def cost_func(u, s, lam_x, lam_y):
+        _u = 1.-u
+        return sinr(inv_cdf(u, lam=lam_x), inv_cdf(_u, lam=lam_y), s=s)
+    expected = integrate.quad(cost_func, 0, 1, args=(s, lam_x, lam_y))
+    return expected[0]
+upper_sinr = np.vectorize(_single_upper_sinr)
+
+def indep_sinr(s=1, lam_x=1, lam_y=1):
+    expect_x = 1/lam_x
+    expect_z = lam_y*np.exp(lam_y*s)*(-expi(-lam_y*s))  # for real x>0: Gamma(0, x)=-Ei(-x)
+    return expect_x*expect_z
+
+###############
