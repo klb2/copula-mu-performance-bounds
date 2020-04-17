@@ -5,11 +5,6 @@ Multi-User Performance Bounds -- Part I: Theory" and "Part II: Applications"
 (Karl-L. Besser, Eduard Jorswieck, 2020, [https://doi.org/XXX](doi:XXX) and
 [https://doi.org/XXX](doi:XXX)).
 
-Some more notebooks which belong to the different applications presented in
-"Copula-Based Multi-User Performance Bounds -- Part II: Applications" (Karl-L.
-Besser, Eduard Jorswieck, 2020, [https://doi.org/XXX](doi:XXX)) are part of
-previous publications and are listed below.
-
 The idea is to give an interactive version of the calculations and presented
 concepts to the reader. One can also change different parameters and explore
 different behaviors on their own.
@@ -21,13 +16,23 @@ different behaviors on their own.
 The following files are provided in this repository:
 
 ### Part I: Theory
-* [Basics - Copula.ipynb](https://mybinder.org/v2/gl/): This Jupyter notebook
+* [Basics - Copula.ipynb](https://mybinder.org/v2/gl/): Jupyter notebook that
   contains plots about basic copula theory.
+* [Probability Bounds.ipynb](https://mybinder.org/): Jupyter notebook that
+  contains plots and calculations about the bounds on the probability of sum
+  and product of uniform distributions.
 * `copulas.py`: Python module that provides classes for different copulas.
 
 ### Part II: Applications
 * `Bounds-Expectation.nb`: Mathematica notebook that shows the bounds on the
-  expected values of sum-rate, MAC rate, and ...
+  expected values of sum rate, MAC rate, and SINR.
+* [Expected Value Bounds.ipynb](https://mybinder.org/): Jupyter notebook that
+  shows the bounds on the expected values of sum rate, MAC rate, and SINR.
+* [Probability Bounds - Rayleigh Fading.ipynb](https://mybinder.org/): Jupyter
+  notebook that contains the probability bounds for the product of two Rayleigh
+  fading channel gains, similar to the model for RIS channels.
+* `expectation_bounds.py`: Calculations of the bounds for the expected values
+  of the sum rate, MAC rate and SINR.
 
 
 ## Usage
