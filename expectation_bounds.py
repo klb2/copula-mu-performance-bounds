@@ -1,3 +1,29 @@
+"""Basic functions for bounding the expected value of a function of two random
+variables
+
+This module contains different functions for calculating bounds on the expected
+value of a function of two random variables.
+
+
+Copyright (C) 2020 Karl-Ludwig Besser
+
+This program is used in the article:
+Karl-Ludwig Besser and Eduard Jorswieck, "Copula-Based Multi-User Performance
+Bounds", submitted to IEEE Communications Letters.
+
+License:
+This program is licensed under the GPLv3 license. If you in any way use this
+code for research that results in publications, please cite our original
+article listed above.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+Author: Karl-Ludwig Besser, Technische Universität Braunschweig
+"""
+
 import numpy as np
 from scipy import integrate
 from scipy.special import expi
