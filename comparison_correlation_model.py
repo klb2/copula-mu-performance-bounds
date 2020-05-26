@@ -1,6 +1,7 @@
 import numpy as np
 from scipy import stats
 from scipy import special
+from scipy import integrate
 import matplotlib.pyplot as plt
 
 def pdf_single_var(s, rho, t):
@@ -25,7 +26,7 @@ def integrand_cdf_multi_var(t, s, rho, n_channels=2):
     df = 2*n_channels
     _var = (1-rho)/2
     rv_ncx2 = stats.ncx2(df=df, nc=_a_l**2/_var, scale=_var)
-    return rv_ncx2.cdf(s)
+    return rv_ncx2.cdf(s)*np.exp(-t)
 
 def single_channel(N, rho, x0, y0):
     x = stats.norm(scale=np.sqrt(.5)).rvs(N)
@@ -46,6 +47,16 @@ def copula_upper_bound(s, lam_x=1, lam_y=1):
     lam = 1./np.maximum(alpha_x, alpha_y)
     return stats.expon(scale=1./lam).cdf(s)
 
+def outage_prob_integration(s, rho, n_channels=2, **kwargs):
+    result = integrate.quad(integrand_cdf_multi_var, 0, np.inf,
+                            args=(s, rho, n_channels))
+    return result[0]
+
+def outage_prob_monte_carlo(s, rho, n_channels, t):
+    _cdf = cdf_multi_var(s, rho, t, n_channels)
+    _prob = np.mean(_cdf)
+    return _prob
+
 def main(snr_db=0, rate=1):
     snr = 10**(snr_db/10.)
     s = (2**rate-1)/snr
@@ -54,26 +65,29 @@ def main(snr_db=0, rate=1):
     lower = copula_lower_bound(s)
     print("Upper Bound: {}\nLower Bound: {}".format(upper, lower))
 
-    # Monte Carlo
+    # Correlation model from literature
     N = 50000
     n_channels = 2
     rho = np.linspace(0, 1, 20)
-    prob = []
+    functions = {"integration": outage_prob_integration, "mc": outage_prob_monte_carlo}
+    results = {k: [] for k in functions.keys()}
     x0 = stats.norm(scale=np.sqrt(.5)).rvs(N)
     y0 = stats.norm(scale=np.sqrt(.5)).rvs(N)
     t = x0**2 + y0**2
     #t = stats.expon(scale=1).rvs(N)
     for _rho in rho:
-        if _rho == 1.:
-            _prob = stats.expon(scale=2).cdf(s)
-        else:
-            _cdf = cdf_multi_var(s, _rho, t, n_channels)
-            _prob = np.mean(_cdf)
-        prob.append(_prob)
-        print("Rho: {:.3f}\tProb: {:.7f}".format(_rho, _prob))
-    plt.plot(rho, prob, 'b-')
+        for name, _func in functions.items():
+            if _rho == 1.:
+                _prob = stats.expon(scale=2).cdf(s)
+            else:
+                _prob = _func(s=s, rho=_rho, n_channels=n_channels, t=t)
+            print("Rho: {:.3f}\tProb: {:.7f}\tAlg: {}".format(_rho, _prob, name))
+            results[name].append(_prob)
     plt.hlines(lower, min(rho), max(rho))
     plt.hlines(upper, min(rho), max(rho))
+    for name, _results in results.items():
+        plt.plot(rho, _results, label=name)
+    plt.legend()
     plt.xlabel("Rho $\\rho$")
     plt.ylabel("Probability")
     plt.title("Two Rayleigh Fading Channels\nSNR={}dB, Rate={:.3f}, s=(2^rate-1)/snr={:.3f}".format(snr_db, rate, s))
