@@ -122,3 +122,28 @@ def indep_sinr(s=1, lam_x=1, lam_y=1):
     return expect_x*expect_z
 
 ###############
+
+
+def main(lam_x=1, lam_y=1):
+    from probability_bounds import export_results
+    def calc_mac_rate(snr_db, bound='min', lam_x=1, lam_y=1):
+        snr_lin = 10**(snr_db/10.)
+        if bound.startswith('ind'):
+            return indep_mac_rate(lam_x=lam_x, lam_y=lam_y, snr=snr_lin)
+        elif bound.startswith('min') or bound.startswith('low'):
+            return lower_mac_rate(lam_x=lam_x, lam_y=lam_y, snr=snr_lin)
+        elif bound.startswith('max') or bound.startswith('up'):
+            return upper_mac_rate(lam_x=lam_x, lam_y=lam_y, snr=snr_lin)
+        else:
+            return NotImplemented
+    snr_db = np.arange(-5, 21)
+    keys = ['min', 'max', 'ind']
+    results = {}
+    for _key in keys:
+        results[_key] = calc_mac_rate(snr_db, _key, lam_x=lam_x, lam_y=lam_y)
+    results["snr"] = snr_db
+    export_results(results, "expectation-mac-rate-lx{}-ly{}.dat".format(lam_x, lam_y))
+    return results
+
+if __name__ == "__main__":
+    main()
