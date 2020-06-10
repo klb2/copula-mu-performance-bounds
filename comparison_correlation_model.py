@@ -4,6 +4,8 @@ from scipy import special
 from scipy import integrate
 import matplotlib.pyplot as plt
 
+from probability_bounds import export_results
+
 def pdf_single_var(s, rho, t):
     return 1./(1-rho)*np.exp(-(s+rho*t)/(1-rho))*special.i0(2*np.sqrt(s*rho*t)/(1-rho))
 
@@ -83,6 +85,8 @@ def main(snr_db=0, rate=1):
                 _prob = _func(s=s, rho=_rho, n_channels=n_channels, t=t)
             print("Rho: {:.3f}\tProb: {:.7f}\tAlg: {}".format(_rho, _prob, name))
             results[name].append(_prob)
+    results["rho"] = rho
+    export_results(results, "rayleigh-comparison-corr-snr{}-rate{}.dat".format(snr_db, rate))
     plt.hlines(lower, min(rho), max(rho))
     plt.hlines(upper, min(rho), max(rho))
     for name, _results in results.items():
