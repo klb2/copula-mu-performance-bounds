@@ -1,3 +1,30 @@
+"""Computations of the outage probability for dependent Rayleigh fading
+channels with a dependency model from literature.
+
+This module contains different functions to calculate the outage probability of
+Rayleigh fading channels with a specific dependency model from literature.
+Monte Carlo simulations are performed as verification.
+
+
+Copyright (C) 2020 Karl-Ludwig Besser
+
+This program is used in the article:
+Karl-Ludwig Besser and Eduard Jorswieck, "Copula-Based Bounds for Multi-User
+Communications", submitted to IEEE Communications Letters
+
+License:
+This program is licensed under the GPLv3 license. If you in any way use this
+code for research that results in publications, please cite our original
+article listed above.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+Author: Karl-Ludwig Besser, Technische Universität Braunschweig
+"""
+
 import numpy as np
 from scipy import stats
 from scipy import special

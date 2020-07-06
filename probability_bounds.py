@@ -8,8 +8,8 @@ probability of the function of two random variables, e.g., their sum.
 Copyright (C) 2020 Karl-Ludwig Besser
 
 This program is used in the article:
-Karl-Ludwig Besser and Eduard Jorswieck, "Copula-Based Multi-User Performance
-Bounds", submitted to IEEE Communications Letters.
+Karl-Ludwig Besser and Eduard Jorswieck, "Copula-Based Bounds for Multi-User
+Communications", submitted to IEEE Communications Letters.
 
 License:
 This program is licensed under the GPLv3 license. If you in any way use this
