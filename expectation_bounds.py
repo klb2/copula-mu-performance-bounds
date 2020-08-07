@@ -99,6 +99,16 @@ def indep_mac_rate(lam_x, lam_y, snr):
         expect_psi = -np.exp(lam_y*s)*(expi(-lam_y*s)-np.exp(-lam_y*s)*np.log(s))
     return (expect_xi - expect_psi)/np.log(2)
 
+def limit_indep_mac_rate(lam_x, lam_y):
+    if lam_x != lam_y:
+        lim = (lam_y*np.log(lam_y/lam_x))/(lam_y-lam_x)
+    else:
+        lim = 1 + np.log(lam_y) - np.log(lam_x)
+    return lim/np.log(2)
+
+def limit_lower_mac_rate(lam_x, lam_y):
+    return np.log((lam_y+lam_x)/lam_x)/np.log(2)
+
 ##############
 
 
