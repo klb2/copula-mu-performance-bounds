@@ -58,7 +58,7 @@ The present code was developed and tested with the following versions:
 
 Make sure you have [Python3](https://www.python.org/downloads/) installed on
 your computer.
-You can then install the requires packages (including Jupyter) by running
+You can then install the required packages (including Jupyter) by running
 ```bash
 pip3 install -r requirements.txt
 jupyter nbextension enable --py widgetsnbextension
