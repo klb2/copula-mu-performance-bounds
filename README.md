@@ -2,8 +2,11 @@
 
 This repository contains supplementary material for the papers "Copula-Based
 Bounds for Multi-User Communications - Part I: Average Performance" and "Part
-II: Outage Performance" (Karl-L. Besser, Eduard Jorswieck, 2020, [doi:XXX]()
-and [doi:XXX]()).
+II: Outage Performance" (Karl-L. Besser and Eduard Jorswieck, IEEE
+Communications Letters, 2020,
+[doi:10.1109/LCOMM.2020.3023056](https://doi.org/10.1109/LCOMM.2020.3023056)
+and
+[doi:10.1109/LCOMM.2020.3023050](https://doi.org/10.1109/LCOMM.2020.3023050)).
 
 The idea is to give an interactive version of the calculations and presented
 concepts to the reader. One can also change different parameters and explore
