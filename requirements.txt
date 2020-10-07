@@ -1,5 +1,5 @@
-numpy
-scipy>=1.2
-matplotlib
-seaborn
-jupyter
+numpy==1.18
+scipy==1.4
+matplotlib==3.2
+seaborn==0.9
+jupyter==1.0
