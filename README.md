@@ -7,6 +7,9 @@ Communications Letters, 2020,
 [doi:10.1109/LCOMM.2020.3023056](https://doi.org/10.1109/LCOMM.2020.3023056)
 and
 [doi:10.1109/LCOMM.2020.3023050](https://doi.org/10.1109/LCOMM.2020.3023050)).
+The papers can also be found on arXiv:
+* Part I: [arXiv:2009.09852](https://arxiv.org/abs/2009.09852)
+* Part II: [arXiv:2009.09886](https://arxiv.org/abs/2009.09886)
 
 The idea is to give an interactive version of the calculations and presented
 concepts to the reader. One can also change different parameters and explore
