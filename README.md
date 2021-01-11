@@ -3,7 +3,7 @@
 This repository contains supplementary material for the papers "Copula-Based
 Bounds for Multi-User Communications - Part I: Average Performance" and "Part
 II: Outage Performance" (Karl-L. Besser and Eduard Jorswieck, IEEE
-Communications Letters, 2020,
+Communications Letters, vol. 25, no. 1, pp. 3-12, Jan. 2021,
 [doi:10.1109/LCOMM.2020.3023056](https://doi.org/10.1109/LCOMM.2020.3023056)
 and
 [doi:10.1109/LCOMM.2020.3023050](https://doi.org/10.1109/LCOMM.2020.3023050)).
@@ -98,3 +98,36 @@ This research was supported in part by the Deutsche Forschungsgemeinschaft
 This program is licensed under the GPLv3 license. If you in any way use this
 code for research that results in publications, please cite our original
 article listed above.
+
+You can use the following BibTeX entries
+```bibtex
+@article{Besser2021part1,
+	year = {2021},
+	publisher = {Institute of Electrical and Electronics Engineers ({IEEE})},
+	author = {Jorswieck, Eduard A. and Besser, Karl-Ludwig},
+	title = {Copula-Based Bounds for Multi-User Communications -- {Part I: Average Performance}},
+	journal = {{IEEE} Communications Letters},
+	doi = {10.1109/LCOMM.2020.3023056},
+	eprint = {2009.09852},
+	archivePrefix = {arXiv},
+	primaryClass = {cs.IT},
+	volume = {25},
+	number = {1},
+	pages = {3--7},
+}
+
+@article{Besser2021part2,
+	year = {2021},
+	publisher = {Institute of Electrical and Electronics Engineers ({IEEE})},
+	author = {Besser, Karl-Ludwig and Jorswieck, Eduard A.},
+	title = {Copula-Based Bounds for Multi-User Communications -- {Part II: Outage Performance}},
+	journal = {{IEEE} Communications Letters},
+	doi = {10.1109/LCOMM.2020.3023050},
+	eprint = {2009.09886},
+	archivePrefix = {arXiv},
+	primaryClass = {cs.IT},
+	volume = {25},
+	number = {1},
+	pages = {8--12},
+}
+```
