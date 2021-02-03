@@ -9,7 +9,7 @@ Copyright (C) 2020 Karl-Ludwig Besser
 
 This program is used in the article:
 Karl-Ludwig Besser and Eduard Jorswieck, "Copula-Based Bounds for Multi-User
-Communications", submitted to IEEE Communications Letters.
+Communications", IEEE Communications Letters, vol. 25, no. 1, pp. 3-12, 2021.
 
 License:
 This program is licensed under the GPLv3 license. If you in any way use this
